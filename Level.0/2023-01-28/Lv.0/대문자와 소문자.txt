@@ -1,0 +1,55 @@
+[대문자와 소문자]
+
+
+[문제 설명]
+문자열 my_string이 매개변수로 주어질 때, 대문자는 소문자로 소문자는 대문자로 변환한 문자열을 return하도록 solution 함수를 완성해주세요.
+
+
+[제한사항]
+1 ≤ my_string의 길이 ≤ 1,000
+my_string은 영어 대문자와 소문자로만 구성되어 있습니다.
+
+
+[입출력 예]
+my_string	result
+"cccCCC"	"CCCccc"
+"abCdEfghIJ"	"ABcDeFGHij"
+
+
+[다른 사람의 풀이1]
+class Solution {
+    fun solution(myString: String) = myString.toList()
+        .map { if (it.isLowerCase()) it.toUpperCase() else it.toLowerCase() }
+        .joinToString("")
+}
+
+
+[다른사람의 풀이2]
+class Solution {
+    fun solution(my_string: String): String = my_string.map { changeUpperCase(it) }.joinToString("")
+
+    private fun changeUpperCase(c: Char): String = when {
+        c.isLowerCase() -> c.uppercase()
+        else -> c.lowercase()
+    }
+}
+
+
+[나의 풀이]
+class Solution {
+    fun solution(my_string: String): String {
+        
+        val changeStrUpperLower = my_string
+        var answer : String = "";
+        
+        for (i in 0..changeStrUpperLower.length-1){
+            if (changeStrUpperLower[i].isUpperCase()){
+                answer += changeStrUpperLower[i].toLowerCase()
+            }else{
+                answer += changeStrUpperLower[i].toUpperCase()
+            }
+        }
+        
+        return answer
+    }
+}
