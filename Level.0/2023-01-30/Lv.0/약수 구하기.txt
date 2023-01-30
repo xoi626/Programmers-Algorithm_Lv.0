@@ -1,0 +1,45 @@
+[약수 구하기]
+
+
+[문제 설명]
+정수 n이 매개변수로 주어질 때, n의 약수를 오름차순으로 담은 배열을 return하도록 solution 함수를 완성해주세요.
+
+
+[입출력 예]
+n	result
+24	[1, 2, 3, 4, 6, 8, 12, 24]
+29	[1, 29]
+
+
+[다른 사람의 풀이 1]
+class Solution {
+    fun solution(n: Int) = (1..n).filter { n % it == 0 }
+}
+
+
+[다른 사람의 풀이 2]
+class Solution {
+    fun solution(n: Int): IntArray {
+        val answer = mutableListOf<Int>()
+        for(i in 1..n){
+            if(n%i==0)answer.add(i)
+        }
+        return answer.toIntArray()
+    }
+}
+
+
+[나의 풀이]
+class Solution {
+    fun solution(n: Int): IntArray {
+        var answer: IntArray = intArrayOf()
+        
+        for (i in 1..n){
+            if (n % i == 0){
+                answer += i
+            }
+        }
+        
+        return answer
+    }
+}
