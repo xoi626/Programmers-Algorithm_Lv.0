@@ -1,0 +1,33 @@
+[중복된 문자 제거]
+
+
+[문제 설명]
+문자열 my_string이 매개변수로 주어집니다. my_string에서 중복된 문자를 제거하고 하나의 문자만 남긴 문자열을 return하도록 solution 함수를 완성해주세요.
+
+
+[입출력 예]
+my_string	                 result
+"people"	                 "peol"
+"We are the world"     "We arthwold"
+
+
+[다른 사람의 풀이 1]
+class Solution {
+    fun solution(my_string: String): String = my_string.toSet().joinToString("")
+}
+
+
+[다른 사람의 풀이 2]
+class Solution {
+    fun solution(my_string: String): String {
+        val uniqueChars = mutableSetOf<Char>()
+
+        return my_string.filter { uniqueChars.add(it) }
+    }
+}
+
+
+[나의 풀이]
+class Solution {
+    fun solution(my_string: String): String = my_string.toList().distinct().joinToString("")
+}
