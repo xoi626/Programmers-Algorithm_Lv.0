@@ -1,0 +1,67 @@
+[소인수분해]
+
+
+[문제 설명]
+소인수분해란 어떤 수를 소수들의 곱으로 표현하는 것입니다. 예를 들어 12를 소인수 분해하면 2 * 2 * 3 으로 나타낼 수 있습니다. 따라서 12의 소인수는 2와 3입니다. 자연수 n이 매개변수로 주어질 때 n의 소인수를 오름차순으로 담은 배열을 return하도록 solution 함수를 완성해주세요.
+
+
+[입출력 예]
+n	result
+12	[2, 3]
+17	[17]
+420	[2, 3, 5, 7]
+
+
+[다른 사람의 풀이]
+
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+class Solution {
+    fun solution(n: Int): IntArray {
+        var answer: MutableList<Int> = arrayListOf()
+        var num = n
+
+        for(i in 2..n) {
+            if(num == 1) break
+            while (num % i == 0) {
+                num /= i
+                answer.add(i)
+            }
+        }
+        return answer.toSet().toIntArray()
+    }
+}
+
+
+[나의 풀이]
+class Solution {
+    fun solution(n: Int): IntArray {
+        var num = n
+        val list: MutableList<Int> = ArrayList()
+        var i = 2
+
+        while (num >= 2) {
+            if (num % i == 0) {
+                list.add(i)
+                num /= i
+            } else {
+                i++
+            }
+        }
+        
+        return list.stream().distinct().mapToInt { obj: Int -> obj }.toArray()
+    }
+}
