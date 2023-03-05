@@ -1,0 +1,46 @@
+[잘라서 배열로 저장하기]
+
+
+[문제 설명]
+문자열 my_str과 n이 매개변수로 주어질 때, my_str을 길이 n씩 잘라서 저장한 배열을 return하도록 solution 함수를 완성해주세요.
+
+
+[입출력 예]
+my_str	n	result
+"abc1Addfggg4556b"	6	["abc1Ad", "dfggg4", "556b"]
+"abcdef123"	3	["abc", "def", "123"]
+
+
+[다른 사람의 풀이1]
+class Solution {
+    fun solution(myStr: String, n: Int) = (0 until myStr.length / n + if (myStr.length % n > 0) 1 else 0)
+        .map { if (it == myStr.length / n) myStr.substring(it * n) else myStr.substring(it * n, (it + 1) * n) }
+        .toTypedArray()
+}
+
+
+[다른 사람의 풀이2]
+class Solution {
+    fun solution(my_str: String, n: Int): Array<String> {
+        val list = my_str.chunked(n)
+        return Array<String>(list.size){ list[it] }
+    }
+}
+
+
+
+[나의 풀이]
+class Solution {
+    fun solution(my_str: String, n: Int): MutableList<String> {
+        var answer = mutableListOf<String>()
+
+        for (i in 0 until my_str.length step (n)) {
+            if (my_str.length >= i + n) {
+                answer.add(my_str.substring(i, i + n))
+            } else {
+                answer.add(my_str.substring(i))
+            }
+        }
+        return answer
+    }
+}
