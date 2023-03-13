@@ -1,0 +1,15 @@
+[문자열 밀기]
+
+
+[입출력 예]
+A	B	result
+"hello"	"ohell"	1
+"apple"	"elppa"	-1
+"atat"	"tata"	1
+"abc"	"abc"	0
+
+
+[나의 풀이]
+class Solution {
+    fun solution(A: String, B: String): Int = (B + B).indexOf(A)
+}
